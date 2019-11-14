@@ -1,12 +1,9 @@
-.chat-stream {
-    height: 66vh;
-
-    background-color: #eee;
-
-    display: flex;
-    align-items: flex-end;
-
-    overflow: hidden;
+body {
+    margin: 0; 
 }
 
-
+#chat-stream {
+    display: flex; 
+    align-items: flex-end; 
+    height: 50vh; 
+}
