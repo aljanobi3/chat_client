@@ -1,11 +1,20 @@
-const socket = new WebSocket('wss://www.el-evan.com/web_dev_chat_sever');
+window.addEventListener('DOMContentLoaded', () => {
+   
+    const socket = new WebSocket('wss://www.el-evan.com/web_dev_chat_server'); 
 
-document.querySelector('#submit').addEventListener('click',() => {
-    socket.send(JSON.stringify(Name: document.querySelector('#name').value,Message: document.querySelector('#message').value}));
+    socket.addEventListener('open', () => {
+        console.log('Socket, opened!'); 
+    
+        document.querySelector('#send').addEventListener('click', () => {
+            socket.send(JSON.stringify({
+                Name: document.querySelector('#name').value, 
+                Message: document.querySelector('#message').value
+            })); 
+        }); 
+    }); 
 
-
-socket.addEVentListener('message', event => {
-    const message = JSON.parse(event.data);
-    document.querySelector('.chat-strem').innerText += Message.name + ' :: ' +message.Message + '\n';
-
-});
+    socket.addEventListener('message', socketMessage => {
+        const incoming = JSON.parse(socketMessage.data); 
+        document.querySelector('#chat-stream').innerText += '\n' + incoming.Name + '\t' + incoming.Message; 
+    }); 
+}); 
