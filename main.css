@@ -1,0 +1,12 @@
+.chat-stream {
+    height: 66vh;
+
+    background-color: #eee;
+
+    display: flex;
+    align-items: flex-end;
+
+    overflow: hidden;
+}
+
+
